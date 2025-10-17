@@ -1,23 +1,23 @@
 # Stage 1: Build the app
 FROM eclipse-temurin:21-jdk AS builder
 
-WORKDIR /lab9-backend
+WORKDIR /app
 
 COPY mvnw .          
 COPY .mvn/ .mvn
 COPY pom.xml ./
-RUN chmod +x mvnw
-
 COPY src ./src
+
+# Give execute permission for mvnw
+RUN chmod +x mvnw
 
 RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Run the app
 FROM eclipse-temurin:21-jdk
-
-WORKDIR /lab9-backend
-COPY --from=builder /lab9-backend/target/*.jar lab9-backend.jar
+WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
 
 EXPOSE 2000
 
-ENTRYPOINT ["java", "-jar", "lab9-backend.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
