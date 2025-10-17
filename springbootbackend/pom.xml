@@ -13,7 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springbootbackend</name>
 	<description>Spring Boot Backend Project</description>
-	<packaging>war</packaging>
 	<url/>
 	<licenses>
 		<license/>
@@ -64,7 +63,6 @@
 	</dependencies>
 
 	<build>
-	<finalName>jenkinsreactp1</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
